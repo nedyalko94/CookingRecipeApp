@@ -4,7 +4,7 @@ import Card from "./Card";
 // import FoodDetail from './FoodDetail'
 // import  getAll  from '../action/fetch_action '
 
-function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter } ) {
+function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter ,setSearchByName} ) {
   const [result, setResult] = useState([]);
   const [firstChar, setFirstChar] = useState("b");
   // {console.log(firstChar)}
@@ -12,6 +12,7 @@ function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter } ) {
   const getByFirstChar = (e) => {
     setFirstChar(e.target.id);
     setMealsCatFilter(null)
+    setSearchByName(null)
     return;
   };
   
@@ -60,10 +61,10 @@ function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter } ) {
           {e}
         </Button>
       ))}
-
       <Row>
       
-    
+      {/* { console.log(searchByName,inputValue)} */}
+
         {(inputValue !=='' || inputValue !==null) && searchByName !== null? searchByName.map((meals, index) => 
               <Col md={6} sm={8} lg={4} xl={2} key={index}>
                 <Card meals={meals} key={index} />

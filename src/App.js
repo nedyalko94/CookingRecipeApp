@@ -63,7 +63,7 @@ const CategoriesFilter=async(e)=>{
     <Layout 
       Categories={Categories}  CategoriesFilter={CategoriesFilter} setInputValue={setInputValue} inputValue={inputValue}>
     <Routes>
-       <Route path='/' element={<Home inputValue={inputValue} setMealsCatFilter={setMealsCatFilter} searchByName={searchByName} MealsCatFilter={MealsCatFilter}/>}  />
+       <Route path='/' element={<Home inputValue={inputValue} setMealsCatFilter={setMealsCatFilter} searchByName={searchByName} MealsCatFilter={MealsCatFilter} setSearchByName={setSearchByName}/>}  />
         <Route path='/:id' element={<Detail/>} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/FeelLucky!' element={<FeelLucky randomResult={randomResult}  />} />

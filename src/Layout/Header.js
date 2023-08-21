@@ -44,6 +44,7 @@ function Header({ CategoriesFilter, setInputValue, Categories,inputValue }) {
             <Link
               to={"/"}
               className="nav-link text-decoration-none mx-2"
+              // onClick={()=>{setInputValue("z")}}
             >
               Home
             </Link>
