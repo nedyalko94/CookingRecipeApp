@@ -9,7 +9,7 @@ import Detail from './Pages/Detail'
 function App() {
   const [randomResult,setRandomResult] = useState([])
   const [Categories,setCategories] = useState([])
-  const[inputValue,setInputValue] =useState('')
+  const[inputValue,setInputValue] =useState("")
  const [searchByName,setSearchByName] = useState([])
  const [MealsCatFilter,setMealsCatFilter] = useState(null)
 
@@ -57,13 +57,14 @@ const CategoriesFilter=async(e)=>{
      getByName()
 }
     , [inputValue])
+    // ,searchByName
 
 
   return (
     <Layout 
-      Categories={Categories}  CategoriesFilter={CategoriesFilter} setInputValue={setInputValue} inputValue={inputValue}>
+      Categories={Categories}  CategoriesFilter={CategoriesFilter} setInputValue={setInputValue} >
     <Routes>
-       <Route path='/' element={<Home inputValue={inputValue} setMealsCatFilter={setMealsCatFilter} searchByName={searchByName} MealsCatFilter={MealsCatFilter} setSearchByName={setSearchByName}/>}  />
+       <Route path='/' element={<Home inputValue={inputValue} setInputValue={setInputValue} setMealsCatFilter={setMealsCatFilter} searchByName={searchByName} MealsCatFilter={MealsCatFilter} setSearchByName={setSearchByName}/>}  />
         <Route path='/:id' element={<Detail/>} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/FeelLucky!' element={<FeelLucky randomResult={randomResult}  />} />

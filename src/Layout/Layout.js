@@ -6,19 +6,18 @@ import Header from "./Header";
 function Layout({
   Categories,
   children,
-  searchResultHandler,
   setInputValue,
   CategoriesFilter,
-  inputValue
+  
 }) {
   return (
     <BrowserRouter>
       <Header
-        searchResultHandler={searchResultHandler}
+       
         setInputValue={setInputValue}
         Categories={Categories}
         CategoriesFilter={CategoriesFilter}
-        inputValue={inputValue}
+    
       />
       {children}
       <Footer />

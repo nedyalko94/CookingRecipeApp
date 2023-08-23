@@ -4,7 +4,7 @@ import Card from "./Card";
 // import FoodDetail from './FoodDetail'
 // import  getAll  from '../action/fetch_action '
 
-function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter ,setSearchByName} ) {
+function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter ,setInputValue} ) {
   const [result, setResult] = useState([]);
   const [firstChar, setFirstChar] = useState("b");
   // {console.log(firstChar)}
@@ -12,7 +12,7 @@ function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter ,setSea
   const getByFirstChar = (e) => {
     setFirstChar(e.target.id);
     setMealsCatFilter(null)
-    setSearchByName(null)
+    setInputValue(undefined)
     return;
   };
   
@@ -65,7 +65,7 @@ function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter ,setSea
       
       {/* { console.log(searchByName,inputValue)} */}
 
-        {(inputValue !=='' || inputValue !==null) && searchByName !== null? searchByName.map((meals, index) => 
+        {/* {(inputValue !=='' || inputValue !==null) && searchByName !== null? searchByName.map((meals, index) => 
               <Col md={6} sm={8} lg={4} xl={2} key={index}>
                 <Card meals={meals} key={index} />
               </Col>
@@ -75,6 +75,28 @@ function Home({inputValue, searchByName,MealsCatFilter,setMealsCatFilter ,setSea
               </Col>
             )): result !== undefined 
           ? result.map((meals, index) => (
+              <Col md={6} sm={8} lg={4} xl={2} key={index}>
+               
+                <Card meals={meals} key={index} />
+              </Col>
+            ))
+          : <h1> No result have been found</h1>
+          } */}
+
+
+{ inputValue !== undefined && searchByName !==null ? 
+              searchByName.map((meals, index) => 
+              <Col md={6} sm={8} lg={4} xl={2} key={index}>
+              <Card meals={meals} key={index} />
+              </Col>)
+              
+              : MealsCatFilter !== null ? 
+              MealsCatFilter.map((meals, index) => (
+              <Col md={6} sm={8} lg={4} xl={2} key={index}>
+                <Card meals={meals} key={index} />
+              </Col>))
+              : result !== undefined ?
+               result.map((meals, index) => (
               <Col md={6} sm={8} lg={4} xl={2} key={index}>
                
                 <Card meals={meals} key={index} />

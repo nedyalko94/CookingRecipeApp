@@ -7,10 +7,11 @@ import {
   NavDropdown,
   Form
 } from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { MdOutlineFoodBank } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 
-function Header({ CategoriesFilter, setInputValue, Categories,inputValue }) {
+function Header({ CategoriesFilter, setInputValue, Categories }) {
   const InputRef = useRef()
 
   const x = useNavigate();
@@ -22,6 +23,10 @@ function Header({ CategoriesFilter, setInputValue, Categories,inputValue }) {
   };
   const SearchHandler=(e)=>{setInputValue(InputRef.current.value)  }
 
+  const resetValue = ()=>{
+    setInputValue("");
+  }
+
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid> 
@@ -31,6 +36,7 @@ function Header({ CategoriesFilter, setInputValue, Categories,inputValue }) {
             <MdOutlineFoodBank
               fill="white"
               className="display-1 text-warning bg-danger p-1 rounded-1 mx-2"
+              onClick={resetValue}
             />
           </Link>{""}
         </Navbar.Brand>
@@ -44,7 +50,8 @@ function Header({ CategoriesFilter, setInputValue, Categories,inputValue }) {
             <Link
               to={"/"}
               className="nav-link text-decoration-none mx-2"
-              // onClick={()=>{setInputValue("z")}}
+              onClick={resetValue}
+              
             >
               Home
             </Link>
@@ -57,12 +64,13 @@ function Header({ CategoriesFilter, setInputValue, Categories,inputValue }) {
             <NavDropdown
               title="Categories"
               id="navbarScrollingDropdown"
-              className="mx-2"
+              className="mx-2 "
             >
               {Categories !== undefined ? 
               Categories.map((Category,index)=>
-              <NavDropdown.Item   key={index} onClick={()=>{setInputValue(null); InputRef.current.value =''}}>
-                <Link to={'/'}  className='nav-link text-decoration-none' id={Category.strCategory} onClick={CategoriesFilter} >{Category.strCategory}</Link>
+              <NavDropdown.Item   key={index} onClick={()=>{setInputValue(undefined); InputRef.current.value =''}}>
+                {/* <Link to={'/'}  className='nav-link text-decoration-none' id={Category.strCategory} onClick={CategoriesFilter} >{Category.strCategory}</Link> */}
+                <DropdownItem href={'/'}  className=' text-decoration-none' id={Category.strCategory} onClick={CategoriesFilter} >{Category.strCategory}</DropdownItem>
                 </NavDropdown.Item>):''}
              
 
